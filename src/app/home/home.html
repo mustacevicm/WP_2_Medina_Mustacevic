@@ -1,0 +1,17 @@
+<div class="news-container">
+    <h1>Najnovije Vijesti</h1>
+    <div class="news-grid">
+        <div class="news-card" *ngFor="let item of newsList">
+
+            <img [src]="item.slika_url" alt="Slika vijesti">
+
+            <div class="card-content">
+                <span class="category">{{ item.kategorija }}</span>
+                <h2>{{ item.naslov }}</h2>
+                <p class="date">{{ item.datum | date:'dd.MM.yyyy' }}</p>
+                <p class="text">{{ item.sadrzaj }}</p>
+            </div>
+
+        </div>
+    </div>
+</div>
