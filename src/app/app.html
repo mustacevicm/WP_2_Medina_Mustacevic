@@ -14,6 +14,9 @@
         <span class="user-info">👤 {{ currentUser.ime }} ({{ currentUser.role }})</span>
       </li>
       <li *ngIf="currentUser">
+        <a routerLink="/change-password">🔐 Promjena šifre</a>
+      </li>
+      <li *ngIf="currentUser">
         <a (click)="logout()" class="logout-btn">Odjavi se</a>
       </li>
     </ul>
