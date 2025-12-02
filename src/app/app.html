@@ -1,6 +1,24 @@
-<nav>
-  <h2>Tuzla Portal</h2>
-</nav>
+<header>
+  <nav class="navbar">
+    <div class="logo">
+      <a routerLink="/">Tuzla Portal</a>
+    </div>
+
+    <ul class="nav-links">
+      <li><a routerLink="/" routerLinkActive="active">Početna</a></li>
+
+      <li *ngIf="!currentUser"><a routerLink="/login" routerLinkActive="active">Prijava</a></li>
+      <li *ngIf="!currentUser"><a routerLink="/register" routerLinkActive="active">Registracija</a></li>
+
+      <li *ngIf="currentUser">
+        <span class="user-info">👤 {{ currentUser.ime }} ({{ currentUser.role }})</span>
+      </li>
+      <li *ngIf="currentUser">
+        <a (click)="logout()" class="logout-btn">Odjavi se</a>
+      </li>
+    </ul>
+  </nav>
+</header>
 
 <main>
   <router-outlet></router-outlet>

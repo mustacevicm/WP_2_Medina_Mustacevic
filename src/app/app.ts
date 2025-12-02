@@ -1,12 +1,24 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet, RouterLink } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('WP_2_Medina_Mustacevic');
+export class App implements OnInit {
+  currentUser: any = null;
+
+  constructor(private authService: AuthService) { }
+
+  ngOnInit() {
+    this.authService.currentUser$.subscribe(x => this.currentUser = x);
+  }
+
+  logout() {
+    this.authService.logout();
+  }
 }
