@@ -13,6 +13,9 @@
       <li *ngIf="currentUser">
         <span class="user-info">👤 {{ currentUser.ime }} ({{ currentUser.role }})</span>
       </li>
+      <li *ngIf="currentUser?.role === 'admin'">
+        <a routerLink="/adminpanel" style="color: #ffc107;">Admin Panel</a>
+      </li>
       <li *ngIf="currentUser">
         <a routerLink="/change-password">🔐 Promjena šifre</a>
       </li>

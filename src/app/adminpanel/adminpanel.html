@@ -1,0 +1,55 @@
+<div class="dashboard-container">
+    <h1>Admin Panel - Upravljanje Vijestima</h1>
+
+    <div class="editor-panel">
+        <h3>{{ currentNews.id ? 'Uredi Vijest' : 'Dodaj Novu Vijest' }}</h3>
+
+        <form (ngSubmit)="saveNews()">
+            <div class="form-grid">
+                <input type="text" [(ngModel)]="currentNews.naslov" name="naslov" placeholder="Naslov vijesti" required>
+                <input type="text" [(ngModel)]="currentNews.kategorija" name="kategorija"
+                    placeholder="Kategorija (npr. Sport)" required>
+                <input type="text" [(ngModel)]="currentNews.slika_url" name="slika"
+                    placeholder="URL slike (https://...)" required>
+            </div>
+
+            <textarea [(ngModel)]="currentNews.sadrzaj" name="sadrzaj" rows="5" placeholder="Sadržaj vijesti..."
+                required></textarea>
+
+            <div class="buttons">
+                <button type="submit" class="btn-save">
+                    {{ currentNews.id ? 'Sačuvaj Izmjene' : 'Objavi Vijest' }}
+                </button>
+                <button type="button" class="btn-cancel" (click)="resetForm()" *ngIf="currentNews.id">
+                    Odustani
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Slika</th>
+                    <th>Naslov</th>
+                    <th>Kategorija</th>
+                    <th>Akcije</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let news of newsList">
+                    <td>#{{ news.id }}</td>
+                    <td><img [src]="news.slika_url" class="thumb"></td>
+                    <td>{{ news.naslov }}</td>
+                    <td><span class="badge">{{ news.kategorija }}</span></td>
+                    <td>
+                        <button class="btn-edit" (click)="editNews(news)">Uredi</button>
+                        <button class="btn-delete" (click)="deleteNews(news.id)">Obriši</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

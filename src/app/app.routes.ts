@@ -3,11 +3,13 @@ import { HomeComponent } from './home/home';
 import { LoginComponent } from './login/login';
 import { RegisterComponent } from './register/register';
 import { ChangePasswordComponent } from './change-password/change-password';
+import { AdminPanelComponent } from './adminpanel/adminpanel';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'change-password', component: ChangePasswordComponent },
+    { path: 'adminpanel', component: AdminPanelComponent },
     { path: '**', redirectTo: '' }
 ];
